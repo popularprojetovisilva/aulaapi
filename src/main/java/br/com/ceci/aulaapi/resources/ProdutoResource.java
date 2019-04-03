@@ -1,6 +1,7 @@
 package br.com.ceci.aulaapi.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,11 @@ import br.com.ceci.aulaapi.services.ProdutoService;
 public class ProdutoResource {
 	@Autowired
 	private ProdutoService produtoService;
+	
+	@GetMapping()
+	public List<Produto> listar(){
+		return produtoService.listarTodos();
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> find(@PathVariable Integer id){

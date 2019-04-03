@@ -1,9 +1,11 @@
 package br.com.ceci.aulaapi.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import br.com.ceci.aulaapi.domain.Produto;
 import br.com.ceci.aulaapi.repositories.ProdutoRepository;
@@ -16,6 +18,11 @@ import br.com.ceci.aulaapi.services.exceptions.ObjectNotFoundException;
 public class ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	public List<Produto> listarTodos(){
+		return produtoRepository.findAll(); 
+	}
+	
 public Produto find(Integer id) {
 		
 Optional<Produto> obj= produtoRepository.findById(id);
